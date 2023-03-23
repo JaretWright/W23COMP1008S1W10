@@ -13,7 +13,12 @@ public class Rectangle {
     }
 
     public void setHeight(double height) {
-        this.height = height;
+        if (height>0 && height <100)
+            this.height = height;
+        else if (height <= 0)
+            throw new IllegalArgumentException("Height must be greater than 0");
+        else
+            throw new IllegalArgumentException("Height can not be 100 or greater");
     }
 
     public double getWidth() {
@@ -31,6 +36,6 @@ public class Rectangle {
 
     public double getArea()
     {
-        return 0.0;
+        return width * height;
     }
 }

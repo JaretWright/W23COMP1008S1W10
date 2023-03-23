@@ -32,7 +32,7 @@ public class RectangleTest {
     @org.junit.Test
     public void setWidth() {
         rectangle.setWidth(50);
-        assertEquals(50,rectangle.getWidth());
+        assertEquals(50,rectangle.getWidth(),0.0);
     }
 
     @org.junit.Test
@@ -54,5 +54,34 @@ public class RectangleTest {
 
     @org.junit.Test
     public void getArea() {
+        //rectangle is 20 x 30 = 600
+        assertEquals(600, rectangle.getArea(), 0.0);
+    }
+
+    @org.junit.Test
+    public void getAreaSquare() {
+        //rectangle is 20 x 20 = 400
+        assertEquals(400, square.getArea(), 0.0);
+    }
+
+    @org.junit.Test
+    public void setWidthConstructorInvalid() {
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            new Rectangle(20,0);
+        });
+    }
+
+    @org.junit.Test
+    public void setHeightConstructorInvalid() {
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            new Rectangle(0,20);
+        });
+    }
+
+    @org.junit.Test
+    public void setHeightInvalidHigh() {
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            rectangle.setHeight(101);
+        });
     }
 }
